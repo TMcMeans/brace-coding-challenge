@@ -21,9 +21,10 @@ export default App;
 
 //FINISHED TASKS
 // Publically accessible API- https://pokeapi.co/api/v2/type/{type}
+//Describes type of data user will receive along with a button
 
 //WIP
-// 1. On startup describes the type of a data a user will receive, along with a button, which when clicked calls to the api, and displays the data on screen, replacing the description text with a table or list type view.
+// 1. When button is clicked it calls to the api, and displays the data on screen, replacing the description text with a table or list type view.
 // 2. Allow a user to request more items somehow. This should add to the current list, rather than replacing it
 // 3. Add an input somewhere that, as a user types into it, filters the currently showing results (no need to fetch things based on this).
 // 4. When clicking on an item in this list or table view, navigate to an item specific view that shows a bit more detail.
