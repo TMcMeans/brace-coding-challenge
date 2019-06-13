@@ -1,18 +1,41 @@
 import React, { useState } from 'react';
-import SearchForm from '../SearchForm/SearchForm';
+
+const SearchForm = () => {
+  const [type, getPokemonType] = useState({
+    type: ''
+  });
+  return (
+    <form action="">
+      <input type="text" />
+      <button>Search</button>
+    </form>
+  );
+};
+
+const PokeList = pokemon => {
+  const pokemonList = pokemon.map(currentPokemon => <li />);
+  return <div>{pokemonList}</div>;
+};
 
 const App = () => {
-  const [pokemon, getPokemonByType] = useState({
+  const [pokemon, savePokemonByType] = useState({
     pokemon: []
   });
 
+  const getPokemon = async e => {
+    e.preventDefault();
+    try {
+      const result = await fetch('URL HERE');
+      const pokemon = await result.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="app">
-      <header>
-        <h1>Pokedex</h1>
-        <p>Search for Pokemon by type.</p>
-      </header>
-      <SearchForm />
+      <h1>Pokedex</h1>
+      <button onClick={getPokemon}>Click to view all entries</button>
     </div>
   );
 };
