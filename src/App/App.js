@@ -14,10 +14,10 @@ const SearchForm = () => {
 
 const PokeList = ({ pokemon }) => {
   const pokemonList = pokemon.map(currentPokemon => (
-    <li>{currentPokemon.name}</li>
+    <li key={currentPokemon.name}>{currentPokemon.name}</li>
   ));
-  console.log(pokemon);
-  return <div className="poke-list">pokelist</div>;
+
+  return <div className="poke-list">{pokemonList}</div>;
 };
 
 const App = () => {
@@ -28,10 +28,18 @@ const App = () => {
   const getPokemon = async e => {
     e.preventDefault();
     try {
-      let result = await fetch('https://pokeapi.co/api/v2/pokemon/');
-      let fetchedPoke = await result.json();
-      savePokemon(fetchedPoke.results);
+      const results = await fetch('https://pokeapi.co/api/v2/pokemon/');
+      let fetchedPoke = await results.json();
+      let responses = await Promise.all(
+        fetchedPoke.results.map(currentPoke => fetch(currentPoke.url))
+      );
+
+      let pokeData = await Promise.all(responses.map(result => result.json()));
+
+      console.log(pokeData);
+      // savePokemon(fetchedPoke.results);
     } catch (error) {
+      //ADD ERROR HANDLING
       console.log(error);
     }
   };
