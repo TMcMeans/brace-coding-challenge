@@ -12,32 +12,45 @@ const SearchForm = () => {
   );
 };
 
-const PokeList = pokemon => {
-  const pokemonList = pokemon.map(currentPokemon => <li />);
-  return <div>{pokemonList}</div>;
+const PokeList = ({ pokemon }) => {
+  const pokemonList = pokemon.map(currentPokemon => (
+    <li>{currentPokemon.name}</li>
+  ));
+  console.log(pokemon);
+  return <div className="poke-list">pokelist</div>;
 };
 
 const App = () => {
-  const [pokemon, savePokemonByType] = useState({
+  const [pokemon, savePokemon] = useState({
     pokemon: []
   });
 
   const getPokemon = async e => {
     e.preventDefault();
     try {
-      const result = await fetch('URL HERE');
-      const pokemon = await result.json();
+      let result = await fetch('https://pokeapi.co/api/v2/pokemon/');
+      let fetchedPoke = await result.json();
+      savePokemon(fetchedPoke.results);
     } catch (error) {
       console.log(error);
     }
   };
 
-  return (
-    <div className="app">
-      <h1>Pokedex</h1>
-      <button onClick={getPokemon}>Click to view all entries</button>
-    </div>
-  );
+  if (pokemon.length) {
+    return (
+      <div className="app">
+        <h1>Pokedex</h1>
+        <PokeList pokemon={pokemon} />
+      </div>
+    );
+  } else {
+    return (
+      <div className="app">
+        <h1>Pokedex</h1>
+        <button onClick={getPokemon}>Click to view all entries</button>
+      </div>
+    );
+  }
 };
 
 export default App;
@@ -52,15 +65,7 @@ export default App;
 // 3. Add an input somewhere that, as a user types into it, filters the currently showing results (no need to fetch things based on this).
 // 4. When clicking on an item in this list or table view, navigate to an item specific view that shows a bit more detail.
 
-// Please DO NOT use any api wrapping libraries, http libraries or state management tooling. Use fetch for http access and React component state/context for managing state.
-
-// Please DO use create-react-app or something like it and a routing library (react-router, router-5, whatever-other-router).
-
-// You're welcome to use either JavaScript or Typescript, but please make sure to use modern syntax conventions.
-
-// Please style this using your preferred styling methods, we use styled-components, however use what you know best.
-
-// We're only going to use the most recent version of chrome for reviewing this, and don't expect it to work flawlessly in every browser ever, so no need to waste time ensuring cross-browser compatibility
+// Please DO use a routing library (react-router, router-5, whatever-other-router).
 
 // Feel free to put some personality into this too, it should be a little fun (and hopefully not too stressful).
 
