@@ -79,7 +79,8 @@ const App = () => {
 
   const filterPokemonByType = type => {
     console.log(type);
-    // const filteredPokemon = pokemon.filter(() => )
+    //FILTER POKES HERE
+    // const filteredPokemon = pokemon.filter(poke => {});
     // savePokemon(filteredPokemon);
   };
 
