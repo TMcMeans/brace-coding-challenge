@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+/* Search Form */
 const SearchForm = () => {
   const [type, getPokemonType] = useState({
     type: ''
@@ -12,6 +13,7 @@ const SearchForm = () => {
   );
 };
 
+/* Poke List */
 const PokeList = ({ pokemon }) => {
   const pokemonList = pokemon.map(currentPokemon => (
     <li className="single-pokemon" key={currentPokemon.name}>
@@ -26,21 +28,37 @@ const PokeList = ({ pokemon }) => {
   return <div className="poke-list">{pokemonList}</div>;
 };
 
+/* App */
 const App = () => {
   const [pokemon, savePokemon] = useState({
     pokemon: []
   });
 
-  const getPokemon = async e => {
+  const [nextURL, setNextURL] = useState({
+    nextURL: ''
+  });
+
+  const getPokemon = async (e, URL = 'https://pokeapi.co/api/v2/pokemon/') => {
     e.preventDefault();
     try {
-      const results = await fetch('https://pokeapi.co/api/v2/pokemon/');
+      const results = await fetch(URL);
       let fetched = await results.json();
+
+      setNextURL(fetched.next);
+
       let responses = await Promise.all(
         fetched.results.map(currentPoke => fetch(currentPoke.url))
       );
-      let pokeData = await Promise.all(responses.map(result => result.json()));
-      savePokemon(pokeData);
+      let newPokeData = await Promise.all(
+        responses.map(result => result.json())
+      );
+
+      if (pokemon.length) {
+        let allCollectedPokemon = [...pokemon, ...newPokeData];
+        savePokemon(allCollectedPokemon);
+      } else {
+        savePokemon(newPokeData);
+      }
     } catch (error) {
       //ADD ERROR HANDLING
       console.log(error);
@@ -54,6 +72,13 @@ const App = () => {
         <p>Search by type</p>
         <SearchForm />
         <PokeList pokemon={pokemon} />
+        <button
+          onClick={e => {
+            getPokemon(e, nextURL);
+          }}
+        >
+          View more
+        </button>
       </div>
     );
   } else {
