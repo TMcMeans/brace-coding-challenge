@@ -3,24 +3,25 @@ import React, { useState } from 'react';
 /* Search Form */
 const SearchForm = props => {
   const [type, setPokemonType] = useState({
-    type: 'all'
+    type: ''
   });
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleInputChange = e => {
+    const { value } = e.target;
+    setPokemonType(value);
     console.log(`filtering by pokemon type: ${type}`);
     props.filterPokemonByType(type);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <input
         type="text"
-        onChange={e => setPokemonType(e.target.value)}
+        name="searchInput"
+        onChange={handleInputChange}
         placeholder="filter by Pokemon type"
         value={type}
       />
-      <button>Search</button>
     </form>
   );
 };
@@ -50,7 +51,12 @@ const App = () => {
     nextURL: ''
   });
 
+  const [filteredPokemon, filterPokemon] = useState({
+    filteredPokemon: []
+  });
+
   const getPokemon = async (e, URL = 'https://pokeapi.co/api/v2/pokemon/') => {
+    console.log('getting more pokemon');
     e.preventDefault();
     try {
       const results = await fetch(URL);
@@ -78,10 +84,17 @@ const App = () => {
   };
 
   const filterPokemonByType = type => {
-    console.log(type);
-    //FILTER POKES HERE
-    // const filteredPokemon = pokemon.filter(poke => {});
-    // savePokemon(filteredPokemon);
+    const filteredPokemon = pokemon.filter(poke => {
+      for (let i = 0; i < poke.types.length; i++) {
+        const { name } = poke.types[i].type;
+
+        if (name.includes(type)) {
+          return poke;
+        }
+      }
+    });
+
+    filterPokemon(filteredPokemon);
   };
 
   if (pokemon.length) {
@@ -90,7 +103,9 @@ const App = () => {
         <h1>Pokedex</h1>
         <p>Search by type</p>
         <SearchForm filterPokemonByType={filterPokemonByType} />
-        <PokeList pokemon={pokemon} />
+        <PokeList
+          pokemon={filteredPokemon.length ? filteredPokemon : pokemon}
+        />
         <button
           onClick={e => {
             getPokemon(e, nextURL);
@@ -117,9 +132,9 @@ export default App;
 //Describes type of data user will receive along with a button
 //When button is clicked it calls to the api, and displays the data on screen replacing the description text with a table or list type view
 //Allow a user to request more items somehow. This should add to the current list, rather than replacing it
+//Add an input somewhere that, as a user types into it, filters the currently showing results (no need to fetch things based on this). (CURRENTLY NOT WORKING PERFECTLY)
 
 //WIP
-// 3. Add an input somewhere that, as a user types into it, filters the currently showing results (no need to fetch things based on this).
 // 4. When clicking on an item in this list or table view, navigate to an item specific view that shows a bit more detail.
 // Please DO use a routing library (react-router, router-5, whatever-other-router).
 
