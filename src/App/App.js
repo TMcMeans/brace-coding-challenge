@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 /* Search Form */
 const SearchForm = props => {
@@ -26,16 +27,28 @@ const SearchForm = props => {
   );
 };
 
+/* Poke Page */
+const PokePage = ({ singlePokemon }) => {
+  return (
+    <div className="poke-page">
+      <p>{singlePokemon.id}</p>
+      <img src={singlePokemon.sprites.front_default} alt={singlePokemon.name} />
+      <p>{singlePokemon.name}</p>
+    </div>
+  );
+};
+
 /* Poke List */
 const PokeList = ({ pokemon }) => {
-  const pokemonList = pokemon.map(currentPokemon => (
-    <li className="single-pokemon" key={currentPokemon.name}>
-      <img
-        src={currentPokemon.sprites.front_default}
-        alt={currentPokemon.name}
-      />
-      {currentPokemon.name}
-    </li>
+  const pokemonList = pokemon.map(singlePokemon => (
+    // <li className="single-pokemon" key={singlePokemon.name}>
+    //   <img
+    //     src={currentPokemon.sprites.front_default}
+    //     alt={currentPokemon.name}
+    //   />
+    //   {currentPokemon.name}
+    <PokePage singlePokemon={singlePokemon} key={singlePokemon.name} />
+    // </li>
   ));
 
   return <div className="poke-list">{pokemonList}</div>;
@@ -133,10 +146,11 @@ export default App;
 //When button is clicked it calls to the api, and displays the data on screen replacing the description text with a table or list type view
 //Allow a user to request more items somehow. This should add to the current list, rather than replacing it
 //Add an input somewhere that, as a user types into it, filters the currently showing results (no need to fetch things based on this). (CURRENTLY NOT WORKING PERFECTLY)
+//Please DO use a routing library (react-router, router-5, whatever-other-router).
+//
 
 //WIP
 // 4. When clicking on an item in this list or table view, navigate to an item specific view that shows a bit more detail.
-// Please DO use a routing library (react-router, router-5, whatever-other-router).
 
 //HOW TO SUBMIT
 // Send us an archive (zip, or the like) of your code sample, including the git history.
