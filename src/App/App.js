@@ -38,17 +38,26 @@ const PokePage = ({ singlePokemon }) => {
   );
 };
 
+// onst displayUnicorns = unicornData.map((unicorn, i) => (
+//   <Link to={`/unicorns/${unicorn.id}`} key={unicorn.id}>
+//     <img
+//       src={unicorn.image}
+//       className="app-img"
+//       key={unicorn.id}
+//       alt="unicorn"
+//     />
+//   </Link>
+// ));
+
 /* Poke List */
 const PokeList = ({ pokemon }) => {
   const pokemonList = pokemon.map(singlePokemon => (
-    // <li className="single-pokemon" key={singlePokemon.name}>
-    //   <img
-    //     src={currentPokemon.sprites.front_default}
-    //     alt={currentPokemon.name}
-    //   />
-    //   {currentPokemon.name}
-    <PokePage singlePokemon={singlePokemon} key={singlePokemon.name} />
-    // </li>
+    <Link to={`/pokedex/${singlePokemon.name}`} key={singlePokemon.name}>
+      <p>{singlePokemon.id}</p>
+      <img src={singlePokemon.sprites.front_default} alt={singlePokemon.name} />
+      {singlePokemon.name}
+      {/* <PokePage singlePokemon={singlePokemon} key={singlePokemon.name} /> */}
+    </Link>
   ));
 
   return <div className="poke-list">{pokemonList}</div>;
