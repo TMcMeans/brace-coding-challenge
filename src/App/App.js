@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 /* Search Form */
 const SearchForm = props => {
-  const [type, setPokemonType] = useState({
-    type: ''
-  });
+  const [pokeType, setPokemonType] = useState('');
 
   const handleInputChange = e => {
     const { value } = e.target;
     setPokemonType(value);
-    console.log(`filtering by pokemon type: ${type}`);
-    props.filterPokemonByType(type);
+    props.filterPokemonByType(pokeType);
   };
 
   return (
@@ -21,7 +18,7 @@ const SearchForm = props => {
         name="searchInput"
         onChange={handleInputChange}
         placeholder="filter by Pokemon type"
-        value={type}
+        value={pokeType}
       />
     </form>
   );
@@ -31,6 +28,7 @@ const SearchForm = props => {
 const PokePage = ({ singlePokemon }) => {
   return (
     <div className="poke-page">
+      <h1>Single Pokemon Viewpage</h1>
       <p>{singlePokemon.id}</p>
       <img src={singlePokemon.sprites.front_default} alt={singlePokemon.name} />
       <p>{singlePokemon.name}</p>
@@ -38,21 +36,10 @@ const PokePage = ({ singlePokemon }) => {
   );
 };
 
-// onst displayUnicorns = unicornData.map((unicorn, i) => (
-//   <Link to={`/unicorns/${unicorn.id}`} key={unicorn.id}>
-//     <img
-//       src={unicorn.image}
-//       className="app-img"
-//       key={unicorn.id}
-//       alt="unicorn"
-//     />
-//   </Link>
-// ));
-
 /* Poke List */
 const PokeList = ({ pokemon }) => {
   const pokemonList = pokemon.map(singlePokemon => (
-    <Link to={`/pokedex/${singlePokemon.name}`} key={singlePokemon.name}>
+    <Link to={`/${singlePokemon.name}`} key={singlePokemon.name}>
       <p>{singlePokemon.id}</p>
       <img src={singlePokemon.sprites.front_default} alt={singlePokemon.name} />
       {singlePokemon.name}
@@ -65,20 +52,15 @@ const PokeList = ({ pokemon }) => {
 
 /* App */
 const App = () => {
-  const [pokemon, savePokemon] = useState({
-    pokemon: []
-  });
+  const [pokemon, savePokemon] = useState([]);
 
-  const [nextURL, setNextURL] = useState({
-    nextURL: ''
-  });
+  const [nextURL, setNextURL] = useState('');
 
   const [filteredPokemon, filterPokemon] = useState({
     filteredPokemon: []
   });
 
   const getPokemon = async (e, URL = 'https://pokeapi.co/api/v2/pokemon/') => {
-    console.log('getting more pokemon');
     e.preventDefault();
     try {
       const results = await fetch(URL);
@@ -135,6 +117,21 @@ const App = () => {
         >
           View more
         </button>
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route
+            path="/:id"
+            render={({ match }) => {
+              const singlePokemon = pokemon.find(
+                pokemon => pokemon.name === match.params.id
+              );
+
+              return <PokePage singlePokemon={singlePokemon} />;
+            }}
+          />
+          {/* not found component (404) */}
+          {/* <Route component={Notfound} /> */}
+        </Switch>
       </div>
     );
   } else {
@@ -156,10 +153,7 @@ export default App;
 //Allow a user to request more items somehow. This should add to the current list, rather than replacing it
 //Add an input somewhere that, as a user types into it, filters the currently showing results (no need to fetch things based on this). (CURRENTLY NOT WORKING PERFECTLY)
 //Please DO use a routing library (react-router, router-5, whatever-other-router).
-//
-
-//WIP
-// 4. When clicking on an item in this list or table view, navigate to an item specific view that shows a bit more detail.
+//When clicking on an item in this list or table view, navigate to an item specific view that shows a bit more detail.
 
 //HOW TO SUBMIT
 // Send us an archive (zip, or the like) of your code sample, including the git history.
