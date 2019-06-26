@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import './App.css';
 
 /* Search Form */
 const SearchForm = props => {
@@ -104,7 +105,7 @@ const App = () => {
   if (pokemon.length) {
     return (
       <div className="app">
-        <h1>Pokedex</h1>
+        <h1 className="title">Pokedex</h1>
         <p>Search by type</p>
         <SearchForm filterPokemonByType={filterPokemonByType} />
         <PokeList
@@ -118,7 +119,7 @@ const App = () => {
           View more
         </button>
         <Switch>
-          <Route exact path="/" component={App} />
+          {/* <Route exact path="/" component={App} /> */}
           <Route
             path="/:id"
             render={({ match }) => {
@@ -137,8 +138,10 @@ const App = () => {
   } else {
     return (
       <div className="app">
-        <h1>Pokedex</h1>
-        <button onClick={getPokemon}>Click to view all entries</button>
+        <h1 className="title">Pokedex</h1>
+        <button className="view-entries-btn" onClick={getPokemon}>
+          Click to view all entries
+        </button>
       </div>
     );
   }
