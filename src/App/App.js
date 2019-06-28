@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import './App.css';
 
 /* Search Form */
 const SearchForm = props => {
@@ -7,13 +8,15 @@ const SearchForm = props => {
 
   const handleInputChange = e => {
     const { value } = e.target;
+    console.log(value);
     setPokemonType(value);
     props.filterPokemonByType(pokeType);
   };
 
   return (
-    <form>
+    <form className="search-input-form">
       <input
+        className="search-input"
         type="text"
         name="searchInput"
         onChange={handleInputChange}
@@ -26,12 +29,30 @@ const SearchForm = props => {
 
 /* Poke Page */
 const PokePage = ({ singlePokemon }) => {
+  const types = singlePokemon.types.map(type => (
+    <li className="type" key={type.type.name}>
+      {type.type.name}
+    </li>
+  ));
+
   return (
     <div className="poke-page">
-      <h1>Single Pokemon Viewpage</h1>
-      <p>{singlePokemon.id}</p>
-      <img src={singlePokemon.sprites.front_default} alt={singlePokemon.name} />
-      <p>{singlePokemon.name}</p>
+      <h1 className="stats">{singlePokemon.id}</h1>
+      <h1 className="stats">{singlePokemon.name}</h1>
+      <img
+        className="single-poke-sprite"
+        src={singlePokemon.sprites.front_default}
+        alt={singlePokemon.name}
+      />
+      <img
+        className="single-poke-sprite"
+        src={singlePokemon.sprites.back_default}
+        alt={singlePokemon.name}
+      />
+      <h3 className="stats">height: {singlePokemon.height}</h3>
+      <h3 className="stats">weight: {singlePokemon.weight}</h3>
+      <h3 className="stats type-title">types</h3>
+      <ul className="stats-type">{types}</ul>
     </div>
   );
 };
@@ -39,11 +60,18 @@ const PokePage = ({ singlePokemon }) => {
 /* Poke List */
 const PokeList = ({ pokemon }) => {
   const pokemonList = pokemon.map(singlePokemon => (
-    <Link to={`/${singlePokemon.name}`} key={singlePokemon.name}>
-      <p>{singlePokemon.id}</p>
-      <img src={singlePokemon.sprites.front_default} alt={singlePokemon.name} />
+    <Link
+      className="poke-link"
+      to={`/${singlePokemon.name}`}
+      key={singlePokemon.name}
+    >
+      <p className="poke-id">{singlePokemon.id}</p>
+      <img
+        className="poke-sprite"
+        src={singlePokemon.sprites.front_default}
+        alt={singlePokemon.name}
+      />
       {singlePokemon.name}
-      {/* <PokePage singlePokemon={singlePokemon} key={singlePokemon.name} /> */}
     </Link>
   ));
 
@@ -82,12 +110,12 @@ const App = () => {
         savePokemon(newPokeData);
       }
     } catch (error) {
-      //ADD ERROR HANDLING
       console.log(error);
     }
   };
 
   const filterPokemonByType = type => {
+    debugger;
     const filteredPokemon = pokemon.filter(poke => {
       for (let i = 0; i < poke.types.length; i++) {
         const { name } = poke.types[i].type;
@@ -104,13 +132,13 @@ const App = () => {
   if (pokemon.length) {
     return (
       <div className="app">
-        <h1>Pokedex</h1>
-        <p>Search by type</p>
+        <h1 className="title">Pokedex</h1>
         <SearchForm filterPokemonByType={filterPokemonByType} />
         <PokeList
           pokemon={filteredPokemon.length ? filteredPokemon : pokemon}
         />
         <button
+          className="view-more-btn"
           onClick={e => {
             getPokemon(e, nextURL);
           }}
@@ -118,27 +146,25 @@ const App = () => {
           View more
         </button>
         <Switch>
-          <Route exact path="/" component={App} />
           <Route
             path="/:id"
             render={({ match }) => {
               const singlePokemon = pokemon.find(
                 pokemon => pokemon.name === match.params.id
               );
-
               return <PokePage singlePokemon={singlePokemon} />;
             }}
           />
-          {/* not found component (404) */}
-          {/* <Route component={Notfound} /> */}
         </Switch>
       </div>
     );
   } else {
     return (
       <div className="app">
-        <h1>Pokedex</h1>
-        <button onClick={getPokemon}>Click to view all entries</button>
+        <h1 className="title">Pokedex</h1>
+        <button className="view-entries-btn" onClick={getPokemon}>
+          view all entries
+        </button>
       </div>
     );
   }

@@ -1,68 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Pokedex
 
-## Available Scripts
+![](assets/banner.png)
 
-In the project directory, you can run:
+Pokedex is a basic React app that mimics the behavior of a !(Pokedex)[https://www.pokemon.com/us/pokedex/], a mini encyclopedia of Pokemon species, types, evolutions and moves. Pokemon data is consumed and rendered on the UI via the !(PokeAPI)[https://pokeapi.co/], a free public RESTful API.
 
-### `npm start`
+NOTE: This app is not responsive. It is built to be viewed at max screen width, please maximize your screen window before starting this app on your local machine.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## ⚙️ Initial Setup
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+OS X & Linux:
 
-### `npm test`
+After cloning this repo:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+npm install
+npm start
+```
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The user can click a button to view available Pokemon species.
+![](assets/viewpokemon.png)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+The user can filter by Pokemon type.
+![](assets/filterpokemon.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The user can view a detailed view on a single Pokemon.
+![](assets/singlepokemon.png)
 
-### `npm run eject`
+## Future Iterations
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Planned enhancements include:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Make app responsive for multiple screen widths (including mobile and tablet views)
+- Add more details to single Pokemon view for user, including available moves and evolutions
+- Add a way for user to compare the data of two Pokemon
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🏗 Tech Stack List
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- React
+- React Hooks (state management)
+- React Router 4
+- CSS
 
-## Learn More
+## 📥 How To Contribute
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Fork this repo
+2. Create your feature branch (`git checkout -b feature/thingamajig`)
+3. Commit your changes (`git commit -am 'Added a cool doodad!'`)
+4. Push to the branch (`git push origin feature/thingamajig`)
+5. Create a new Pull Request
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🚀 Core Contributors
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+**Tanjie Mcmeans**
+Github:[https://github.com/TMcMeans](https://github.com/TMcMeans/)

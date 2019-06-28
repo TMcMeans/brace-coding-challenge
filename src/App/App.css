@@ -1,33 +1,127 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Rubik+Mono+One&display=swap');
+
+.app {
+  background: url('../assets/pokedexwallaper9.png') no-repeat center center
+    fixed;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100vh;
+}
+
+.title {
+  font-family: 'Rubik Mono One', sans-serif;
+  position: relative;
+  top: 220px;
+  left: 350px;
+  width: 100px;
+}
+
+.view-entries-btn {
+  position: relative;
+  top: 200px;
+  left: 350px;
+}
+
+.view-entries-btn,
+.view-more-btn {
+  font-family: 'Rubik Mono One', sans-serif;
+  color: black;
+  padding: 10px;
+  font-size: 0.8em;
+  text-align: center;
+  background: #bdc3c7;
+  border: 0;
+  border-bottom: 2px solid #acb2b7;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #acb2b7;
+  box-shadow: inset 0 -2px #acb2b7;
+}
+
+.poke-list {
+  display: flex;
+  flex-flow: row wrap;
+  border: 4px inset #acb2b7;
+  -webkit-box-shadow: inset 0 -2px #acb2b7;
+  box-shadow: inset 0 -2px #acb2b7;
+  position: relative;
+  top: 220px;
+  left: 235px;
+  overflow: scroll;
+  width: 28%;
+  height: 275px;
+  background-color: #e8eaeb;
+}
+
+.search-input-form {
+  position: relative;
+  top: 200px;
+  left: 350px;
+  width: 190px;
+}
+
+.search-input {
+  width: 100%;
+  font-size: 0.8em;
+  height: 20px;
+}
+
+.view-more-btn {
+  position: relative;
+  top: 230px;
+  left: 380px;
+}
+
+.poke-link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 0 4px 4px;
+  height: 150px;
+}
+
+.poke-id {
+  font-family: 'Rubik Mono One', sans-serif;
+  margin-bottom: 0px;
+}
+
+.poke-page {
+  position: relative;
+  left: 840px;
+  bottom: 170px;
+  width: 350px;
+  height: 400px;
+  font-weight: bold;
+}
+
+.stats {
+  font-family: 'Rubik Mono One', sans-serif;
+  margin: 0 auto;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.stats-type {
+  list-style: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.type-title {
+  margin-top: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.type {
+  border: 5px solid limegreen;
+  font-size: 1.5em;
+  text-align: center;
+  margin-right: 30px;
+  padding: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.single-poke-sprite {
+  height: 150px;
+  width: 150px;
+  margin-right: 20px;
 }
