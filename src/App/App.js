@@ -28,12 +28,21 @@ const SearchForm = props => {
 
 /* Poke Page */
 const PokePage = ({ singlePokemon }) => {
+  //add key
+  const types = singlePokemon.types.map(type => (
+    <li key={type.type.name}>{type.type.name}</li>
+  ));
+
   return (
     <div className="poke-page">
+      <h1>{singlePokemon.id}</h1>
       <h1>{singlePokemon.name}</h1>
-      <p>{singlePokemon.id}</p>
       <img src={singlePokemon.sprites.front_default} alt={singlePokemon.name} />
-      <p>{singlePokemon.name}</p>
+      <img src={singlePokemon.sprites.back_default} alt={singlePokemon.name} />
+      <h3>height: {singlePokemon.height}</h3>
+      <h3>weight: {singlePokemon.weight}</h3>
+      <h3>types</h3>
+      <ul>{types}</ul>
     </div>
   );
 };
@@ -130,7 +139,6 @@ const App = () => {
           <Route
             path="/:id"
             render={({ match }) => {
-              console.log(match);
               const singlePokemon = pokemon.find(
                 pokemon => pokemon.name === match.params.id
               );
