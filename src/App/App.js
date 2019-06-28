@@ -8,7 +8,6 @@ const SearchForm = props => {
 
   const handleInputChange = e => {
     const { value } = e.target;
-    console.log(value);
     setPokemonType(value);
     props.filterPokemonByType(pokeType);
   };
@@ -115,7 +114,6 @@ const App = () => {
   };
 
   const filterPokemonByType = type => {
-    debugger;
     const filteredPokemon = pokemon.filter(poke => {
       for (let i = 0; i < poke.types.length; i++) {
         const { name } = poke.types[i].type;
