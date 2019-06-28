@@ -1,6 +1,6 @@
 # Pokedex
 
-![](assets/banner.png)
+![](/src/assets/banner.png)
 
 Pokedex is a basic React app that mimics the behavior of a !(Pokedex)[https://www.pokemon.com/us/pokedex/], a mini encyclopedia of Pokemon species, types, evolutions and moves. Pokemon data is consumed and rendered on the UI via the !(PokeAPI)[https://pokeapi.co/], a free public RESTful API.
 
@@ -20,13 +20,13 @@ npm start
 ## Features
 
 The user can click a button to view available Pokemon species.
-![](assets/viewpokemon.png)
+![](/src/assets/viewpokemon.png)
 
 The user can filter by Pokemon type.
-![](assets/filterpokemon.png)
+![](/src/assets/filterpokemon.png)
 
 The user can view a detailed view on a single Pokemon.
-![](assets/singlepokemon.png)
+![](/assets/singlepokemon.png)
 
 ## Future Iterations
 
@@ -54,4 +54,4 @@ Planned enhancements include:
 ## 🚀 Core Contributors
 
 **Tanjie Mcmeans**
-Github:[https://github.com/TMcMeans](https://github.com/TMcMeans/)
+Github: [https://github.com/TMcMeans](https://github.com/TMcMeans/)
