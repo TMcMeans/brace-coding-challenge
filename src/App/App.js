@@ -30,7 +30,7 @@ const SearchForm = props => {
 const PokePage = ({ singlePokemon }) => {
   return (
     <div className="poke-page">
-      <h1>Single Pokemon Viewpage</h1>
+      <h1>{singlePokemon.name}</h1>
       <p>{singlePokemon.id}</p>
       <img src={singlePokemon.sprites.front_default} alt={singlePokemon.name} />
       <p>{singlePokemon.name}</p>
@@ -91,7 +91,6 @@ const App = () => {
         savePokemon(newPokeData);
       }
     } catch (error) {
-      //ADD ERROR HANDLING
       console.log(error);
     }
   };
@@ -131,15 +130,13 @@ const App = () => {
           <Route
             path="/:id"
             render={({ match }) => {
+              console.log(match);
               const singlePokemon = pokemon.find(
                 pokemon => pokemon.name === match.params.id
               );
-
               return <PokePage singlePokemon={singlePokemon} />;
             }}
           />
-          {/* not found component (404) */}
-          {/* <Route component={Notfound} /> */}
         </Switch>
       </div>
     );
