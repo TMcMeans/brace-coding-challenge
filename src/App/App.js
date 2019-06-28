@@ -13,8 +13,9 @@ const SearchForm = props => {
   };
 
   return (
-    <form>
+    <form className="search-input-form">
       <input
+        className="search-input"
         type="text"
         name="searchInput"
         onChange={handleInputChange}
@@ -40,11 +41,18 @@ const PokePage = ({ singlePokemon }) => {
 /* Poke List */
 const PokeList = ({ pokemon }) => {
   const pokemonList = pokemon.map(singlePokemon => (
-    <Link to={`/${singlePokemon.name}`} key={singlePokemon.name}>
-      <p>{singlePokemon.id}</p>
-      <img src={singlePokemon.sprites.front_default} alt={singlePokemon.name} />
+    <Link
+      className="poke-link"
+      to={`/${singlePokemon.name}`}
+      key={singlePokemon.name}
+    >
+      <p className="poke-id">{singlePokemon.id}</p>
+      <img
+        className="poke-sprite"
+        src={singlePokemon.sprites.front_default}
+        alt={singlePokemon.name}
+      />
       {singlePokemon.name}
-      {/* <PokePage singlePokemon={singlePokemon} key={singlePokemon.name} /> */}
     </Link>
   ));
 
@@ -106,12 +114,12 @@ const App = () => {
     return (
       <div className="app">
         <h1 className="title">Pokedex</h1>
-        <p>Search by type</p>
         <SearchForm filterPokemonByType={filterPokemonByType} />
         <PokeList
           pokemon={filteredPokemon.length ? filteredPokemon : pokemon}
         />
         <button
+          className="view-more-btn"
           onClick={e => {
             getPokemon(e, nextURL);
           }}
@@ -140,7 +148,7 @@ const App = () => {
       <div className="app">
         <h1 className="title">Pokedex</h1>
         <button className="view-entries-btn" onClick={getPokemon}>
-          Click to view all entries
+          view all entries
         </button>
       </div>
     );
