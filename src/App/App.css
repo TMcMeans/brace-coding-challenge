@@ -92,7 +92,35 @@
   position: relative;
   left: 840px;
   bottom: 170px;
-  border: 2px solid grey;
   width: 350px;
   height: 400px;
+  font-weight: bold;
+}
+
+.stats {
+  font-family: 'Rubik Mono One', sans-serif;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.stats-type {
+  list-style: none;
+}
+
+.type-title {
+  margin-top: 10px;
+}
+
+.type {
+  border: 5px solid limegreen;
+  font-size: 1.5em;
+  text-align: center;
+  margin-right: 30px;
+  padding: 5px;
+}
+
+.single-poke-sprite {
+  height: 150px;
+  width: 150px;
+  margin-right: 20px;
 }

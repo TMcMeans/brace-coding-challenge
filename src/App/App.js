@@ -30,19 +30,29 @@ const SearchForm = props => {
 const PokePage = ({ singlePokemon }) => {
   //add key
   const types = singlePokemon.types.map(type => (
-    <li key={type.type.name}>{type.type.name}</li>
+    <li className="type" key={type.type.name}>
+      {type.type.name}
+    </li>
   ));
 
   return (
     <div className="poke-page">
-      <h1>{singlePokemon.id}</h1>
-      <h1>{singlePokemon.name}</h1>
-      <img src={singlePokemon.sprites.front_default} alt={singlePokemon.name} />
-      <img src={singlePokemon.sprites.back_default} alt={singlePokemon.name} />
-      <h3>height: {singlePokemon.height}</h3>
-      <h3>weight: {singlePokemon.weight}</h3>
-      <h3>types</h3>
-      <ul>{types}</ul>
+      <h1 className="stats">{singlePokemon.id}</h1>
+      <h1 className="stats">{singlePokemon.name}</h1>
+      <img
+        className="single-poke-sprite"
+        src={singlePokemon.sprites.front_default}
+        alt={singlePokemon.name}
+      />
+      <img
+        className="single-poke-sprite"
+        src={singlePokemon.sprites.back_default}
+        alt={singlePokemon.name}
+      />
+      <h3 className="stats">height: {singlePokemon.height}</h3>
+      <h3 className="stats">weight: {singlePokemon.weight}</h3>
+      <h3 className="stats type-title">types</h3>
+      <ul className="stats-type">{types}</ul>
     </div>
   );
 };
