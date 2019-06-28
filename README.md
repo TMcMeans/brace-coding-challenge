@@ -26,7 +26,7 @@ The user can filter by Pokemon type.
 ![](/src/assets/filterpokemon.png)
 
 The user can view a detailed view on a single Pokemon.
-![](/assets/singlepokemon.png)
+![](/assets/singlepokemonview.png)
 
 ## Future Iterations
 
