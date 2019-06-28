@@ -2,7 +2,7 @@
 
 ![](/src/assets/banner.png)
 
-Pokedex is a basic React app that mimics the behavior of a !(Pokedex)[https://www.pokemon.com/us/pokedex/], a mini encyclopedia of Pokemon species, types, evolutions and moves. Pokemon data is consumed and rendered on the UI via the !(PokeAPI)[https://pokeapi.co/], a free public RESTful API.
+Pokedex is a basic React app that mimics the behavior of a ![Pokedex](https://www.pokemon.com/us/pokedex/), a mini encyclopedia of Pokemon species, types, evolutions and moves. Pokemon data is consumed and rendered on the UI via the ![PokeAPI](https://pokeapi.co/), a free public RESTful API.
 
 NOTE: This app is not responsive. It is built to be viewed at max screen width, please maximize your screen window before starting this app on your local machine.
 
