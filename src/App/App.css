@@ -81,6 +81,7 @@
   flex-direction: column;
   justify-content: space-between;
   margin: 0 0 4px 4px;
+  height: 150px;
 }
 
 .poke-id {

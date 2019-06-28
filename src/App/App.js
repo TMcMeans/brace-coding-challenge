@@ -8,6 +8,7 @@ const SearchForm = props => {
 
   const handleInputChange = e => {
     const { value } = e.target;
+    console.log(value);
     setPokemonType(value);
     props.filterPokemonByType(pokeType);
   };
@@ -28,7 +29,6 @@ const SearchForm = props => {
 
 /* Poke Page */
 const PokePage = ({ singlePokemon }) => {
-  //add key
   const types = singlePokemon.types.map(type => (
     <li className="type" key={type.type.name}>
       {type.type.name}
@@ -115,6 +115,7 @@ const App = () => {
   };
 
   const filterPokemonByType = type => {
+    debugger;
     const filteredPokemon = pokemon.filter(poke => {
       for (let i = 0; i < poke.types.length; i++) {
         const { name } = poke.types[i].type;
@@ -145,7 +146,6 @@ const App = () => {
           View more
         </button>
         <Switch>
-          {/* <Route exact path="/" component={App} /> */}
           <Route
             path="/:id"
             render={({ match }) => {
