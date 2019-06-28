@@ -171,16 +171,3 @@ const App = () => {
 };
 
 export default App;
-
-//FINISHED TASKS
-// Publically accessible API- https://pokeapi.co/api/v2/type/{type}
-//Describes type of data user will receive along with a button
-//When button is clicked it calls to the api, and displays the data on screen replacing the description text with a table or list type view
-//Allow a user to request more items somehow. This should add to the current list, rather than replacing it
-//Add an input somewhere that, as a user types into it, filters the currently showing results (no need to fetch things based on this). (CURRENTLY NOT WORKING PERFECTLY)
-//Please DO use a routing library (react-router, router-5, whatever-other-router).
-//When clicking on an item in this list or table view, navigate to an item specific view that shows a bit more detail.
-
-//HOW TO SUBMIT
-// Send us an archive (zip, or the like) of your code sample, including the git history.
-// As a heads up, the next phase of the interview will contain a discussion of your work and process, as well as working with an engineer here to expand on this application.
