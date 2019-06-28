@@ -32,9 +32,9 @@ The user can view a detailed view on a single Pokemon.
 
 Planned enhancements include:
 
-- Make app responsive for multiple screen widths (including mobile and tablet views)
-- Add more details to single Pokemon view for user, including available moves and evolutions
-- Add a way for user to compare the data of two Pokemon
+- Make app responsive for multiple screen widths (including mobile and tablet views).
+- Add more details to single Pokemon view for user, including available moves and evolutions.
+- Add a way for user to select and compare the data of two Pokemon.
 
 ## 🏗 Tech Stack List
 
