@@ -83,9 +83,7 @@ const App = () => {
 
   const [nextURL, setNextURL] = useState('');
 
-  const [filteredPokemon, filterPokemon] = useState({
-    filteredPokemon: []
-  });
+  const [filteredPokemon, filterPokemon] = useState([]);
 
   const getPokemon = async (e, URL = 'https://pokeapi.co/api/v2/pokemon/') => {
     e.preventDefault();
